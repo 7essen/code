@@ -1,62 +1,79 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html dir="rtl" lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>روابط مهمة</title>
+    <title>انضم للمجموعه ثم حمل التطبيق</title>
     <style>
         body {
-            font-family: Arial, sans-serif; /* يمكنك تغيير الخط من هنا */
+            font-family: 'Cairo', Arial, sans-serif;
+            background-color: #f5f5f5;
             margin: 0;
+            padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            background-color: #f4f4f4; /* لون خلفية لطيف */
-            direction: rtl; /* لغة عربية من اليمين لليسار */
+            height: 100vh;
+            direction: rtl;
         }
-
         .container {
-            background-color: #fff;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             padding: 40px;
-            border-radius: 10px; /* حواف دائرية لطيفة */
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* ظل خفيف */
+            width: 80%;
+            max-width: 600px;
             text-align: center;
         }
-
         h1 {
-            color: #333;
+            color: #2c3e50;
             margin-bottom: 30px;
         }
-
-        .link-item {
-            margin-bottom: 20px;
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
-
-        .link-button {
-            display: inline-block;
-            padding: 15px 30px;
-            background-color: #007bff; /* لون أزرق جذاب */
-            color: white;
+        .link-card {
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 20px;
+            transition: all 0.3s ease;
             text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: background-color 0.3s ease; /* تأثير سلس عند التحويم */
+            color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-
-        .link-button:hover {
-            background-color: #0056b3; /* لون أزرق أغمق عند التحويم */
+        .link-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            background-color: #f8f9fa;
+        }
+        .link-icon {
+            margin-left: 15px;
+            font-size: 24px;
+            color: #3498db;
+        }
+        .link-text {
+            font-size: 18px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>روابط مهمة</h1>
-        <div class="link-item">
-            <a href="https://groups.google.com/g/7esen" class="link-button" target="_blank">مجموعة جوجل 7esen</a>
-        </div>
-        <div class="link-item">
-            <a href="https://play.google.com/store/apps/details?id=com.tv.hesen" class="link-button" target="_blank">تطبيق 7esen على متجر Play</a>
+        <h1>روابط حسين</h1>
+        
+        <div class="links">
+            <a href="https://groups.google.com/g/7esen" class="link-card" target="_blank">
+                <div class="link-icon">📬</div>
+                <div class="link-text">انضمام</div>
+            </a>
+            
+            <a href="https://play.google.com/store/apps/details?id=com.tv.hesen" class="link-card" target="_blank">
+                <div class="link-icon">📱</div>
+                <div class="link-text">التطبيق</div>
+            </a>
         </div>
     </div>
 </body>
