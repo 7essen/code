@@ -3,122 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>قائمة المهام</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body class="bg-gray-100">
-    <div class="max-w-md mx-auto my-10 p-6 bg-white rounded-2xl shadow-2xl">
-        <h1 class="text-3xl font-bold text-center text-indigo-600 mb-6">
-            مهامي
-        </h1>
-        
-        <div class="flex mb-4">
-            <input 
-                type="text" 
-                id="todoInput"
-                placeholder="أضف مهمة جديدة"
-                class="flex-grow p-3 ml-2 border-2 border-indigo-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400"
-            >
-            <button 
-                id="addButton"
-                class="bg-indigo-500 text-white p-3 rounded-lg hover:bg-indigo-600 transition-colors"
-            >
-                <i class="fas fa-plus"></i>
-            </button>
-        </div>
+    <title>روابط مهمة</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif; /* يمكنك تغيير الخط من هنا */
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f4f4f4; /* لون خلفية لطيف */
+            direction: rtl; /* لغة عربية من اليمين لليسار */
+        }
 
-        <div id="todoList" class="space-y-3">
-            <!-- المهام ستظهر هنا -->
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px; /* حواف دائرية لطيفة */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* ظل خفيف */
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .link-item {
+            margin-bottom: 20px;
+        }
+
+        .link-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #007bff; /* لون أزرق جذاب */
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease; /* تأثير سلس عند التحويم */
+        }
+
+        .link-button:hover {
+            background-color: #0056b3; /* لون أزرق أغمق عند التحويم */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>روابط مهمة</h1>
+        <div class="link-item">
+            <a href="https://groups.google.com/g/7esen" class="link-button" target="_blank">مجموعة جوجل 7esen</a>
+        </div>
+        <div class="link-item">
+            <a href="https://play.google.com/store/apps/details?id=com.tv.hesen" class="link-button" target="_blank">تطبيق 7esen على متجر Play</a>
         </div>
     </div>
-
-    <script>
-        // اختيار العناصر
-        const todoInput = document.getElementById('todoInput');
-        const addButton = document.getElementById('addButton');
-        const todoList = document.getElementById('todoList');
-
-        // مصفوفة المهام
-        let todos = [
-            { id: 1, text: 'تعلم برمجة React', completed: false },
-            { id: 2, text: 'إنهاء المشروع الأسبوعي', completed: false },
-            { id: 3, text: 'ممارسة الرياضة', completed: true }
-        ];
-
-        // دالة عرض المهام
-        function renderTodos() {
-            todoList.innerHTML = '';
-            todos.forEach(todo => {
-                const todoDiv = document.createElement('div');
-                todoDiv.classList.add(
-                    'flex', 'items-center', 'p-3', 'rounded-lg', 'transition-all', 'duration-300',
-                    todo.completed ? 'bg-green-100 line-through text-gray-500' : 'bg-white shadow-md hover:shadow-lg'
-                );
-
-                // زر الإكمال
-                const completeButton = document.createElement('button');
-                completeButton.innerHTML = `<i class="fas ${todo.completed ? 'fa-check-circle text-green-500' : 'fa-circle text-gray-400'}"></i>`;
-                completeButton.classList.add('mr-3');
-                completeButton.addEventListener('click', () => toggleTodo(todo.id));
-
-                // نص المهمة
-                const todoText = document.createElement('span');
-                todoText.textContent = todo.text;
-                todoText.classList.add('flex-grow');
-
-                // زر الحذف
-                const deleteButton = document.createElement('button');
-                deleteButton.innerHTML = '<i class="fas fa-trash text-red-400 hover:text-red-600"></i>';
-                deleteButton.addEventListener('click', () => deleteTodo(todo.id));
-
-                // إضافة العناصر للديف
-                todoDiv.appendChild(completeButton);
-                todoDiv.appendChild(todoText);
-                todoDiv.appendChild(deleteButton);
-
-                todoList.appendChild(todoDiv);
-            });
-        }
-
-        // دالة إضافة مهمة
-        function addTodo() {
-            const text = todoInput.value.trim();
-            if (text === '') return;
-
-            const newTodo = {
-                id: Date.now(),
-                text: text,
-                completed: false
-            };
-
-            todos.push(newTodo);
-            todoInput.value = '';
-            renderTodos();
-        }
-
-        // دالة تبديل حالة المهمة
-        function toggleTodo(id) {
-            todos = todos.map(todo => 
-                todo.id === id ? { ...todo, completed: !todo.completed } : todo
-            );
-            renderTodos();
-        }
-
-        // دالة حذف مهمة
-        function deleteTodo(id) {
-            todos = todos.filter(todo => todo.id !== id);
-            renderTodos();
-        }
-
-        // إضافة المستمعات
-        addButton.addEventListener('click', addTodo);
-        todoInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') addTodo();
-        });
-
-        // عرض المهام عند التحميل
-        renderTodos();
-    </script>
 </body>
 </html>
